@@ -1,0 +1,6 @@
+{
+  "parent": "block/crop", 
+  "textures": {
+    "crop": "cornucopia:block/veggie_barley_crop_7"
+  }
+}

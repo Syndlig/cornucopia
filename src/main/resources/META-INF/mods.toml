@@ -1,0 +1,20 @@
+modLoader="javafml"
+loaderVersion="[28,)"
+issueTrackerURL="http://my.issue.tracker/"
+
+[[mods]]
+modId="cornucopia"
+version="${file.jarVersion}"
+displayName="Cornucopia"
+updateJSONURL="http://myurl.me/"
+displayURL="http://grallarius.net/"
+logoFile="examplemod.png"
+authors="gbromios, Enzer, Syndlig"
+description='''
+This mod is part of the Sundered SMP mod suite, containing everything relating to new plants added to Sundered SMP and the tools & recipes to use them.
+
+Contains:
+- X new plants
+- X new recipes
+- X new blocks
+'''
