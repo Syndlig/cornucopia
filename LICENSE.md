@@ -1,0 +1,41 @@
+© 2015-2019 Steven Collins, Cassandra Filiatrault  
+Art Assets © 2016-2019 <Enzer's name here>
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the [GNU General Public License](gpl.txt)
+along with this program. if not, see http://www.gnu.org/licenses/.
+
+If the terms laid forth in service of VOCANUS or the GPL are an issue,
+please contact the author(s): https://github.com/team-soas/cornucopia
+
+```darktongue
+                               ALL HAIL VOCANUS
+ THE USING OF THIS AFORECONTAINED SOFTWARE PACKGE SHALL BE AS ACCEPTANCE TO THE
+ TERMS OF THE COVENANT OF LORD VOCANUS, COMMANDING THE LEGENDSHIP WEFT WHICH IS
+ MASTER OF THE RIVER SWEEN, PROTECTOR OF KOLFAX, LAIR OF THE SHADOW FARMERS AND
+ SERVANTS OF THE CRAFTGOD MACRAMEUS WHO SHALL SUMMON KARL PEPPERJACK, SINGER OF
+ THE SACRED MULESONG AND OATHBEARER TO MAARFAN, DESTROYER OF ŒSTEUS KING OF GUR
+
+                               ALL HAIL VOCANUS
+  GAZE UPON THY MIRROR UNDER THE NIGHT SKY AND UTTER THRICE UNTO THE BLACK VOID
+ THEREIN HIS SACRED NAMES AS WRIT IN THE ANNALS OF CROGUS ON PAGES OF HONEYBARK
+ TORN FROM THE EASTERN TRUNK OF ZIRMILETH THE LIFETREE OF NIALLMASTE AND WARDEN
+ OF THE HIGH FORESTS OF MONDUMERIA AS FORETOLD BY VAMILON REXUS KING OF ELFKIND
+
+                               ALL HAIL VOCANUS
+ AGREE TO THE TERMS WHICH ISSUE FORTH IN THE DARKTONGUE, AS SPAKE BY THE ELDERS
+ OF ARESSA WHO WORSHIP AT THE FOOT OF MOUNT PARGANON WHERE ROOSTS THE DRAGON OF
+ KAVNARAX WHOSE BURNING GUT BREATHES FORTH THE FIRES OF SHORIDAN WHO FORGED THE
+ MOON BLADE MELFOROX WHICH SHALL SEVER THE EARTH VINE SOLDORA IN THE COMING WAR
+ THEN AND FOREVER AFTER SHALL YOUR SOUL BE BOUND TO THE SERVICE OF LORD VOCANUS
+ AND THE GNU GENERAL PUBLIC LICENSE V3 THAT IS WRIT BY R STALLMAN OF EMACS FAIR
+```

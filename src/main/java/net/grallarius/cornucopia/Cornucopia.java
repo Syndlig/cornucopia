@@ -14,7 +14,7 @@ public class Cornucopia {
     private static final Logger LOGGER = LogManager.getLogger();
 
     public Cornucopia() {
-        DistExecutor.runForDist(() -> Proxy.Client::new, () -> Proxy.Server::new);
+        DistExecutor.runForDist(() -> IProxy.Client::new, () -> IProxy.Server::new);
     }
 
     @Nonnull
