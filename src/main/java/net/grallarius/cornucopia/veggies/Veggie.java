@@ -6,11 +6,11 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 
 public class Veggie {
     private static final LinkedHashMap<String, Veggie> vegMap = new LinkedHashMap<>();
-
     public static final Veggie
             artichoke = new Veggie("artichoke"),
             asparagus = new Veggie("asparagus"),
@@ -45,23 +45,19 @@ public class Veggie {
             turnip = new Veggie("turnip"),
             zucchini = new Veggie("zucchini");
 
-    public final String name;
     public final BlockVeggieCrop crop;
     public final BlockVeggieWild wild;
     public final ItemVeggieRaw raw;
     public final ItemVeggieSeed seed;
 
-    public Veggie(final String name, final BlockVeggieCrop crop, final BlockVeggieWild wild, final ItemVeggieRaw raw, final ItemVeggieSeed seed) {
-        this.name = name;
+    private Veggie(final String name, final BlockVeggieCrop crop, final BlockVeggieWild wild, final ItemVeggieRaw raw, final ItemVeggieSeed seed) {
         this.crop = crop;
-        this.wild = wild;
+        this.crop.setSeed(seed);
         this.raw = raw;
         this.seed = seed;
+        this.wild = wild;
 
-        this.crop.setDrops(raw, seed);
-        this.wild.setDrops(seed);
         vegMap.put(name, this);
-        System.out.println(String.format("Created veggie \"%s\", vegMap size: %d", name, vegMap.size()));
     }
 
     private Veggie(final String name, final BlockVeggieCrop crop, final BlockVeggieWild wild, final ItemVeggieRaw raw) {
@@ -77,5 +73,9 @@ public class Veggie {
 
     public static LinkedHashMap<String, Veggie> getVegMap() {
         return vegMap;
+    }
+
+    public static BlockVeggieCrop[] getCropArray() {
+        return Arrays.stream(vegMap.values().toArray(new Veggie[0])).map(veggie -> veggie.crop).toArray(BlockVeggieCrop[]::new);
     }
 }

@@ -1,5 +1,10 @@
 package net.grallarius.cornucopia;
 
+import net.grallarius.cornucopia.veggies.Veggie;
+import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.world.GrassColors;
+import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
@@ -11,8 +16,9 @@ public class IProxy {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(IProxy::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(IProxy::enqueueIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(IProxy::processIMC);
-
         MinecraftForge.EVENT_BUS.addListener(IProxy::serverStarting);
+
+//        MinecraftForge.EVENT_BUS.register(new VeggieLoot()); //TODO currently broken in forge, does not detect modded loot tables.
     }
 
     private static void setup(final FMLCommonSetupEvent event) {
@@ -33,6 +39,15 @@ public class IProxy {
         }
 
         private static void clientSetup(FMLClientSetupEvent event) {
+            addBiomeTinting(Veggie.getCropArray());
+        }
+
+        private static void addBiomeTinting(Block[] blocks) {
+            Minecraft.getInstance().getBlockColors().register(
+                    (state, world, pos, tintIndex) -> world != null && pos != null
+                            ? BiomeColors.getGrassColor(world, pos)
+                            : GrassColors.get(0.5, 1),
+                    blocks);
         }
     }
 

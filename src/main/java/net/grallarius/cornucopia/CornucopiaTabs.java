@@ -3,7 +3,6 @@ package net.grallarius.cornucopia;
 import net.grallarius.cornucopia.veggies.Veggie;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 
 public class CornucopiaTabs {
 
