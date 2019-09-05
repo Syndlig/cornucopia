@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "age=0": { "model": "cornucopia:block/veggie_corn_crop_0" },
+    "age=1": { "model": "cornucopia:block/veggie_corn_crop_0" },
+    "age=2": { "model": "cornucopia:block/veggie_corn_crop_0" },
+    "age=3": { "model": "cornucopia:block/veggie_corn_crop_0" },
+    "age=4": { "model": "cornucopia:block/veggie_corn_top_4" },
+    "age=5": { "model": "cornucopia:block/veggie_corn_top_5" },
+    "age=6": { "model": "cornucopia:block/veggie_corn_top_6" },
+    "age=7": { "model": "cornucopia:block/veggie_corn_top_7" }
+  }
+}

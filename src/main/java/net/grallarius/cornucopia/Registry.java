@@ -1,6 +1,7 @@
 package net.grallarius.cornucopia;
 
 import net.grallarius.cornucopia.veggies.Veggie;
+import net.grallarius.cornucopia.veggies.block.BlockVeggieTallCrop;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
@@ -16,7 +17,10 @@ public class Registry {
     @SubscribeEvent
     public static void registerBlocks(final RegistryEvent.Register<Block> event) {
         IForgeRegistry<Block> registry = event.getRegistry();
-        Veggie.getVegMap().values().forEach(veggie -> registry.registerAll(veggie.crop, veggie.wild));
+        Veggie.getVegMap().values().forEach(veggie -> {
+            registry.registerAll(veggie.crop, veggie.wild);
+            if (veggie.crop instanceof BlockVeggieTallCrop) registry.register(BlockVeggieTallCrop.top);
+        });
     }
 
     @SubscribeEvent

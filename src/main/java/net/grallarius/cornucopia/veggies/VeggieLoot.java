@@ -1,6 +1,7 @@
 package net.grallarius.cornucopia.veggies;
 
 import net.grallarius.cornucopia.Cornucopia;
+import net.grallarius.cornucopia.veggies.block.BlockVeggieCrop;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.world.storage.loot.ItemLootEntry;

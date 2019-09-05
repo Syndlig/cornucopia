@@ -1,5 +1,10 @@
 package net.grallarius.cornucopia.veggies;
 
+import net.grallarius.cornucopia.veggies.block.BlockVeggieCrop;
+import net.grallarius.cornucopia.veggies.block.BlockVeggieTallCrop;
+import net.grallarius.cornucopia.veggies.block.BlockVeggieWild;
+import net.grallarius.cornucopia.veggies.item.ItemVeggieRaw;
+import net.grallarius.cornucopia.veggies.item.ItemVeggieSeed;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -23,7 +28,7 @@ public class Veggie {
             broccoli = new Veggie("broccoli"),
             cabbage = new Veggie("cabbage"),
             celery = new Veggie("celery"),
-            corn = new Veggie("corn"),
+            corn = new Veggie("corn", 2),
             cucumber = new Veggie("cucumber"),
             eggplant = new Veggie("eggplant"),
             garlic = new Veggie("garlic"),
@@ -62,6 +67,13 @@ public class Veggie {
 
     private Veggie(final String name, final BlockVeggieCrop crop, final BlockVeggieWild wild, final ItemVeggieRaw raw) {
         this(name, crop, wild, raw, new ItemVeggieSeed(name, crop, new Item.Properties()));
+    }
+
+    private Veggie(final String name, final int height) {
+        this(name,
+                new BlockVeggieTallCrop(name, Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0f).sound(SoundType.PLANT)),
+                new BlockVeggieWild(name, Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0f).sound(SoundType.PLANT)),
+                new ItemVeggieRaw(name, (new Item.Properties()).food(new Food.Builder().hunger(1).saturation(0.1f).build())));
     }
 
     private Veggie(final String name) {
