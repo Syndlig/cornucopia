@@ -10,12 +10,12 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = Cornucopia.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class VeggieEventHandler {
-  @SubscribeEvent
-  public static void onBlockVeggieTallTopBonemealUse(BonemealEvent event) {
-    if (event.getBlock().getBlock() instanceof BlockVeggieTallTop) {
-      BoneMealItem.applyBonemeal(event.getPlayer().getHeldItemMainhand(), event.getWorld(), event.getPos().down(), event.getPlayer());
-      BlockState downState = event.getWorld().getBlockState(event.getPos().down());
-      event.getWorld().notifyBlockUpdate(event.getPos().down(), downState, downState, 2);
+    @SubscribeEvent
+    public static void onBlockVeggieTallTopBonemealUse(BonemealEvent event) {
+        if (event.getBlock().getBlock() instanceof BlockVeggieTallTop) {
+            BoneMealItem.applyBonemeal(event.getPlayer().getHeldItemMainhand(), event.getWorld(), event.getPos().down(), event.getPlayer());
+            BlockState downState = event.getWorld().getBlockState(event.getPos().down());
+            event.getWorld().notifyBlockUpdate(event.getPos().down(), downState, downState, 2);
+        }
     }
-  }
 }
