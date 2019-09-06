@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-class BlockVeggieTallTop extends BushBlock {
+public class BlockVeggieTallTop extends BushBlock {
     private static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
     private final BlockVeggieTallCrop crop;
 

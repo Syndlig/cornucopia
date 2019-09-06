@@ -1,6 +1,7 @@
 package net.grallarius.cornucopia;
 
 import net.grallarius.cornucopia.veggies.Veggie;
+import net.grallarius.cornucopia.veggies.VeggieEventHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.GrassColors;
@@ -17,7 +18,7 @@ public class IProxy {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(IProxy::enqueueIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(IProxy::processIMC);
         MinecraftForge.EVENT_BUS.addListener(IProxy::serverStarting);
-
+        MinecraftForge.EVENT_BUS.register(VeggieEventHandler.class);
 //        MinecraftForge.EVENT_BUS.register(new VeggieLoot()); //TODO currently broken in forge, does not detect modded loot tables.
     }
 
