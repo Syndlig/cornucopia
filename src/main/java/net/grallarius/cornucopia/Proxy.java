@@ -11,15 +11,16 @@ import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-public class IProxy {
+public class Proxy {
 
-    IProxy() {
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(IProxy::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(IProxy::enqueueIMC);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(IProxy::processIMC);
-        MinecraftForge.EVENT_BUS.addListener(IProxy::serverStarting);
+    Proxy() {
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(Proxy::setup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(Proxy::enqueueIMC);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(Proxy::processIMC);
+        MinecraftForge.EVENT_BUS.addListener(Proxy::serverStarting);
         MinecraftForge.EVENT_BUS.register(VeggieEventHandler.class);
-//        MinecraftForge.EVENT_BUS.register(new VeggieLoot()); //TODO currently broken in forge, does not detect modded loot tables.
+
+//        MinecraftForge.EVENT_BUS.register(VeggieLoot.class);
     }
 
     private static void setup(final FMLCommonSetupEvent event) {
@@ -34,7 +35,7 @@ public class IProxy {
     private static void serverStarting(FMLServerStartingEvent event) {
     }
 
-    static class Client extends IProxy {
+    static class Client extends Proxy {
         Client() {
             FMLJavaModLoadingContext.get().getModEventBus().addListener(Client::clientSetup);
         }
@@ -52,7 +53,7 @@ public class IProxy {
         }
     }
 
-    static class Server extends IProxy {
+    static class Server extends Proxy {
         Server() {
             FMLJavaModLoadingContext.get().getModEventBus().addListener(Server::serverSetup);
         }

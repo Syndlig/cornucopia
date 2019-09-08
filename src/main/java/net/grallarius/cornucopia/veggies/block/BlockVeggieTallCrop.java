@@ -41,7 +41,7 @@ public class BlockVeggieTallCrop extends BlockVeggieCrop {
 
     public void grow(final World worldIn, @Nonnull final BlockPos pos, @Nonnull final BlockState state) {
         int newAge = this.getAge(state) + this.getBonemealAgeIncrease(worldIn);
-        if (newAge > this.getMaxAge()) return;
+        if (newAge > this.getMaxAge()) newAge = this.getMaxAge();
 
         if (newAge < tallAge) {
             worldIn.setBlockState(pos, this.withAge(newAge), 2);

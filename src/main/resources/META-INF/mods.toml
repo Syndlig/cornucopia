@@ -4,7 +4,7 @@ issueTrackerURL="http://my.issue.tracker/"
 
 [[mods]]
 modId="cornucopia"
-version="0.1-snapshot"
+version="${file.jarVersion}"
 displayName="Cornucopia"
 updateJSONURL="http://myurl.me/"
 displayURL="http://grallarius.net/"

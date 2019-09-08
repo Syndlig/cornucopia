@@ -17,10 +17,10 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public class VeggieLoot {
 
     @SubscribeEvent
-    void setVeggieLootPools(final LootTableLoadEvent event) {
+    static void setVeggieLootPools(final LootTableLoadEvent event) {
         if (event.getName().getNamespace().equals(Cornucopia.MOD_ID)) {
             Veggie veggie = Veggie.getVegMap().get(event.getName().getPath().split("_")[1]);
-            if (veggie != null) {
+            if (veggie != null && event.getName().getPath().equals(veggie.crop.getRegistryName().getPath())) {
                 LootTable table = event.getLootTableManager().getLootTableFromLocation(event.getName());
                 table.addPool(buildLootPool(veggie));
                 table.addPool(buildBonusPool(veggie));
@@ -28,9 +28,7 @@ public class VeggieLoot {
         }
     }
 
-
-
-    private LootPool buildLootPool(Veggie veggie) {
+    private static LootPool buildLootPool(Veggie veggie) {
         return LootPool.builder()
                 .addEntry(ItemLootEntry.builder(veggie.raw)
                         .acceptCondition(buildCondition(veggie.crop))
@@ -38,7 +36,7 @@ public class VeggieLoot {
                 .build();
     }
 
-    private LootPool buildBonusPool(Veggie veggie) {
+    private static LootPool buildBonusPool(Veggie veggie) {
         return LootPool.builder()
                 .acceptCondition(buildCondition(veggie.crop))
                 .addEntry(ItemLootEntry.builder(veggie.seed)
@@ -46,7 +44,7 @@ public class VeggieLoot {
                 .build();
     }
 
-    private ILootCondition.IBuilder buildCondition(BlockVeggieCrop crop) {
+    private static ILootCondition.IBuilder buildCondition(BlockVeggieCrop crop) {
         return BlockStateProperty.builder(crop).with(CropsBlock.AGE, 7);
     }
 }
