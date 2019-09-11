@@ -2,6 +2,7 @@ package net.grallarius.cornucopia;
 
 import net.grallarius.cornucopia.veggies.Veggie;
 import net.grallarius.cornucopia.veggies.VeggieEventHandler;
+import net.grallarius.cornucopia.veggies.VeggieLoot;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.GrassColors;
@@ -12,15 +13,14 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 public class Proxy {
-
     Proxy() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(Proxy::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(Proxy::enqueueIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(Proxy::processIMC);
+
         MinecraftForge.EVENT_BUS.addListener(Proxy::serverStarting);
         MinecraftForge.EVENT_BUS.register(VeggieEventHandler.class);
-
-//        MinecraftForge.EVENT_BUS.register(VeggieLoot.class);
+        MinecraftForge.EVENT_BUS.register(VeggieLoot.class);
     }
 
     private static void setup(final FMLCommonSetupEvent event) {
