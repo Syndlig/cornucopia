@@ -3,10 +3,8 @@ package net.grallarius.cornucopia;
 import net.grallarius.cornucopia.veggies.Veggie;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 
 public class CornucopiaTabs {
-
     public static final ItemGroup VEGGIES = new ItemGroup(getName("veggies")) {
         public ItemStack createIcon() {
             return new ItemStack(Veggie.asparagus.raw);

@@ -11,10 +11,4 @@ displayURL="http://grallarius.net/"
 logoFile="examplemod.png"
 authors="gbromios, Enzer, Syndlig"
 description='''
-This mod is part of the Sundered SMP mod suite, containing everything relating to new plants added to Sundered SMP and the tools & recipes to use them.
-
-Contains:
-- X new plants
-- X new recipes
-- X new blocks
-'''
+Farming and cooking module of the Sundered SMP mod suite.'''

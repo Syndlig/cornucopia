@@ -11,10 +11,10 @@ import javax.annotation.Nonnull;
 @Mod(Cornucopia.MOD_ID)
 public class Cornucopia {
     public static final String MOD_ID = "cornucopia";
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger();
 
     public Cornucopia() {
-        DistExecutor.runForDist(() -> IProxy.Client::new, () -> IProxy.Server::new);
+        DistExecutor.runForDist(() -> Proxy.Client::new, () -> Proxy.Server::new);
     }
 
     @Nonnull

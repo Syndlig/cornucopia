@@ -1,16 +1,16 @@
 package net.grallarius.cornucopia.veggies;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.item.Food;
-import net.minecraft.item.Item;
+import net.grallarius.cornucopia.veggies.block.BlockVeggieCrop;
+import net.grallarius.cornucopia.veggies.block.BlockVeggieTallCrop;
+import net.grallarius.cornucopia.veggies.block.BlockVeggieWild;
+import net.grallarius.cornucopia.veggies.item.ItemVeggieRaw;
+import net.grallarius.cornucopia.veggies.item.ItemVeggieSeed;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 
 public class Veggie {
     private static final LinkedHashMap<String, Veggie> vegMap = new LinkedHashMap<>();
-
     public static final Veggie
             artichoke = new Veggie("artichoke"),
             asparagus = new Veggie("asparagus"),
@@ -23,7 +23,7 @@ public class Veggie {
             broccoli = new Veggie("broccoli"),
             cabbage = new Veggie("cabbage"),
             celery = new Veggie("celery"),
-            corn = new Veggie("corn"),
+            corn = new Veggie("corn", Type.TALL),
             cucumber = new Veggie("cucumber"),
             eggplant = new Veggie("eggplant"),
             garlic = new Veggie("garlic"),
@@ -44,38 +44,52 @@ public class Veggie {
             tomato = new Veggie("tomato"),
             turnip = new Veggie("turnip"),
             zucchini = new Veggie("zucchini");
-
-    public final String name;
     public final BlockVeggieCrop crop;
     public final BlockVeggieWild wild;
     public final ItemVeggieRaw raw;
     public final ItemVeggieSeed seed;
 
-    public Veggie(final String name, final BlockVeggieCrop crop, final BlockVeggieWild wild, final ItemVeggieRaw raw, final ItemVeggieSeed seed) {
-        this.name = name;
+    private Veggie(final String name, final BlockVeggieCrop crop, final BlockVeggieWild wild, final ItemVeggieRaw raw, final ItemVeggieSeed seed) {
         this.crop = crop;
-        this.wild = wild;
+        this.crop.setSeed(seed);
         this.raw = raw;
         this.seed = seed;
+        this.wild = wild;
 
-        this.crop.setDrops(raw, seed);
-        this.wild.setDrops(seed);
         vegMap.put(name, this);
-        System.out.println(String.format("Created veggie \"%s\", vegMap size: %d", name, vegMap.size()));
     }
 
     private Veggie(final String name, final BlockVeggieCrop crop, final BlockVeggieWild wild, final ItemVeggieRaw raw) {
-        this(name, crop, wild, raw, new ItemVeggieSeed(name, crop, new Item.Properties()));
+        this(name, crop, wild, raw, new ItemVeggieSeed(name, crop));
+    }
+
+    private Veggie(final String name, final BlockVeggieCrop crop) {
+        this(name, crop,
+                new BlockVeggieWild(name),
+                new ItemVeggieRaw(name));
+    }
+
+    private Veggie(final String name, final Type type) {
+        this(name, buildCrop(name, type));
     }
 
     private Veggie(final String name) {
-        this(name,
-                new BlockVeggieCrop(name, Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0f).sound(SoundType.PLANT)),
-                new BlockVeggieWild(name, Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0f).sound(SoundType.PLANT)),
-                new ItemVeggieRaw(name, (new Item.Properties()).food(new Food.Builder().hunger(1).saturation(0.1f).build())));
+        this(name, Type.SHORT);
+    }
+
+    private static BlockVeggieCrop buildCrop(final String name, final Type type) {
+        return (type == Type.SHORT)
+                ? new BlockVeggieCrop(name)
+                : new BlockVeggieTallCrop(name);
     }
 
     public static LinkedHashMap<String, Veggie> getVegMap() {
         return vegMap;
     }
+
+    public static BlockVeggieCrop[] getCropArray() {
+        return Arrays.stream(vegMap.values().toArray(new Veggie[0])).map(veggie -> veggie.crop).toArray(BlockVeggieCrop[]::new);
+    }
+
+    private enum Type {SHORT, TALL}
 }
