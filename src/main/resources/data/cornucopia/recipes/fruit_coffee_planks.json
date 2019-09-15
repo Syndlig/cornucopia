@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "cornucopia:fruit_coffee_log"
+    }
+  ],
+  "result": {
+    "item": "minecraft:dark_oak_planks",
+    "count": 4
+  }
+}

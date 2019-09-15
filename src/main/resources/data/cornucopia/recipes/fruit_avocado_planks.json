@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "cornucopia:fruit_avocado_log"
+    }
+  ],
+  "result": {
+    "item": "minecraft:spruce_planks",
+    "count": 4
+  }
+}

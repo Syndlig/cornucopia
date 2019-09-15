@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "cornucopia:fruit_almond_sapling",
+    "cornucopia:fruit_avocado_sapling",
+    "cornucopia:fruit_banana_sapling",
+    "cornucopia:fruit_cherry_sapling",
+    "cornucopia:fruit_coconut_sapling",
+    "cornucopia:fruit_coffee_sapling",
+    "cornucopia:fruit_date_sapling",
+    "cornucopia:fruit_fig_sapling",
+    "cornucopia:fruit_grapefruit_sapling",
+    "cornucopia:fruit_kiwi_sapling",
+    "cornucopia:fruit_lemon_sapling",
+    "cornucopia:fruit_lime_sapling",
+    "cornucopia:fruit_olive_sapling",
+    "cornucopia:fruit_orange_sapling",
+    "cornucopia:fruit_peach_sapling",
+    "cornucopia:fruit_pear_sapling",
+    "cornucopia:fruit_plum_sapling",
+    "cornucopia:fruit_pomegranate_sapling"
+  ]
+}

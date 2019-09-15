@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "cornucopia:fruit_almond_log",
+    "cornucopia:fruit_avocado_log",
+    "cornucopia:fruit_banana_log",
+    "cornucopia:fruit_cherry_log",
+    "cornucopia:fruit_coconut_log",
+    "cornucopia:fruit_coffee_log",
+    "cornucopia:fruit_date_log",
+    "cornucopia:fruit_fig_log",
+    "cornucopia:fruit_grapefruit_log",
+    "cornucopia:fruit_kiwi_log",
+    "cornucopia:fruit_lemon_log",
+    "cornucopia:fruit_lime_log",
+    "cornucopia:fruit_olive_log",
+    "cornucopia:fruit_orange_log",
+    "cornucopia:fruit_peach_log",
+    "cornucopia:fruit_pear_log",
+    "cornucopia:fruit_plum_log",
+    "cornucopia:fruit_pomegranate_log"
+  ]
+}

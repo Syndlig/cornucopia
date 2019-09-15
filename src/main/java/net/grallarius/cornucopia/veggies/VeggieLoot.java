@@ -19,7 +19,7 @@ public class VeggieLoot {
     @SubscribeEvent
     static void setVeggieLootPools(final LootTableLoadEvent event) {
         if (event.getName().getNamespace().equals(Cornucopia.MOD_ID)) {
-            Veggie veggie = Veggie.getVegMap().get(event.getName().getPath().split("_")[1]);
+            Veggie veggie = Veggie.vegMap.get(event.getName().getPath().split("_")[1]);
             if (veggie != null && event.getName().getPath().equals(veggie.crop.getRegistryName().getPath())) {
                 LootTable table = event.getLootTableManager().getLootTableFromLocation(event.getName());
                 table.addPool(buildLootPool(veggie));
