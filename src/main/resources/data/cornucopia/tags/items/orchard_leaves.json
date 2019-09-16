@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "cornucopia:orchard_almond_leaves",
+    "cornucopia:orchard_avocado_leaves",
+    "cornucopia:orchard_banana_leaves",
+    "cornucopia:orchard_cherry_leaves",
+    "cornucopia:orchard_coconut_leaves",
+    "cornucopia:orchard_coffee_leaves",
+    "cornucopia:orchard_date_leaves",
+    "cornucopia:orchard_fig_leaves",
+    "cornucopia:orchard_grapefruit_leaves",
+    "cornucopia:orchard_kiwi_leaves",
+    "cornucopia:orchard_lemon_leaves",
+    "cornucopia:orchard_lime_leaves",
+    "cornucopia:orchard_olive_leaves",
+    "cornucopia:orchard_orange_leaves",
+    "cornucopia:orchard_peach_leaves",
+    "cornucopia:orchard_pear_leaves",
+    "cornucopia:orchard_plum_leaves",
+    "cornucopia:orchard_pomegranate_leaves"
+  ]
+}

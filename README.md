@@ -46,9 +46,9 @@ Without further ado:
 
 ## Orchards
  - ~~14 New Fruit-bearing trees. These are *not* based on apples. Apples are dumb, and these are cool.~~
- - ~~Very rarely, you may spot a fruit growing on a tree in the wild. If you're lucky, you'll get a sapling when you harvest it.~~
- - ~~Plant this sapling in your orchard to recieve a fruit tree, but make sure you pick a good spot... saplings are not easy to come by.~~
- - ~~Fruits will grow under the branches of your new fruit tree. You may want to monitor new buds, and prune them back so they're not too close together.~~
+ - ~~Very rarely, you may spot a orchard growing on a tree in the wild. If you're lucky, you'll get a sapling when you harvest it.~~
+ - ~~Plant this sapling in your orchard to recieve a orchard tree, but make sure you pick a good spot... saplings are not easy to come by.~~
+ - ~~Fruits will grow under the branches of your new orchard tree. You may want to monitor new buds, and prune them back so they're not too close together.~~
  - ~~Once the tree is well-established, its fruits will have a small chance to drop saplings. This should take quite a long time, so don't get impatient.~~
  - ~~Fruit growth may be sped up with bonemeal just like crops, but fruits grown with bonemeal will never drop saplings.~~
 

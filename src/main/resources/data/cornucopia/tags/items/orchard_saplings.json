@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "cornucopia:orchard_almond_sapling",
+    "cornucopia:orchard_avocado_sapling",
+    "cornucopia:orchard_banana_sapling",
+    "cornucopia:orchard_cherry_sapling",
+    "cornucopia:orchard_coconut_sapling",
+    "cornucopia:orchard_coffee_sapling",
+    "cornucopia:orchard_date_sapling",
+    "cornucopia:orchard_fig_sapling",
+    "cornucopia:orchard_grapefruit_sapling",
+    "cornucopia:orchard_kiwi_sapling",
+    "cornucopia:orchard_lemon_sapling",
+    "cornucopia:orchard_lime_sapling",
+    "cornucopia:orchard_olive_sapling",
+    "cornucopia:orchard_orange_sapling",
+    "cornucopia:orchard_peach_sapling",
+    "cornucopia:orchard_pear_sapling",
+    "cornucopia:orchard_plum_sapling",
+    "cornucopia:orchard_pomegranate_sapling"
+  ]
+}

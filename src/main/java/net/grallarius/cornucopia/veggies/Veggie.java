@@ -5,12 +5,15 @@ import net.grallarius.cornucopia.veggies.block.BlockVeggieTallCrop;
 import net.grallarius.cornucopia.veggies.block.BlockVeggieWild;
 import net.grallarius.cornucopia.veggies.item.ItemVeggieRaw;
 import net.grallarius.cornucopia.veggies.item.ItemVeggieSeed;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 
 public class Veggie {
-    private static final LinkedHashMap<String, Veggie> vegMap = new LinkedHashMap<>();
+    static final LinkedHashMap<String, Veggie> vegMap = new LinkedHashMap<>();
     public static final Veggie
             artichoke = new Veggie("artichoke"),
             asparagus = new Veggie("asparagus"),
@@ -63,27 +66,30 @@ public class Veggie {
         this(name, crop, wild, raw, new ItemVeggieSeed(name, crop));
     }
 
-    private Veggie(final String name, final BlockVeggieCrop crop) {
-        this(name, crop,
-                new BlockVeggieWild(name),
-                new ItemVeggieRaw(name));
-    }
-
     private Veggie(final String name, final Type type) {
-        this(name, buildCrop(name, type));
+        this(name, (type == Type.SHORT) ? new BlockVeggieCrop(name) : new BlockVeggieTallCrop(name),
+                new BlockVeggieWild(name), new ItemVeggieRaw(name));
     }
 
     private Veggie(final String name) {
         this(name, Type.SHORT);
     }
 
-    private static BlockVeggieCrop buildCrop(final String name, final Type type) {
-        return (type == Type.SHORT)
-                ? new BlockVeggieCrop(name)
-                : new BlockVeggieTallCrop(name);
+    private enum Type {SHORT, TALL}
+
+    public static void registerBlocks(IForgeRegistry<Block> registry) {
+        vegMap.values().forEach(veggie -> {
+            registry.registerAll(veggie.crop, veggie.wild);
+            if (veggie.crop instanceof BlockVeggieTallCrop)
+                registry.register(((BlockVeggieTallCrop) veggie.crop).top);
+        });
     }
 
-    public static LinkedHashMap<String, Veggie> getVegMap() {
+    public static void registerItems(IForgeRegistry<Item> registry) {
+        vegMap.values().forEach(veggie -> registry.registerAll(veggie.raw, veggie.seed));
+    }
+
+    static LinkedHashMap<String, Veggie> getVegMap() {
         return vegMap;
     }
 
@@ -91,5 +97,7 @@ public class Veggie {
         return Arrays.stream(vegMap.values().toArray(new Veggie[0])).map(veggie -> veggie.crop).toArray(BlockVeggieCrop[]::new);
     }
 
-    private enum Type {SHORT, TALL}
+    public static ItemVeggieRaw getTabIcon() {
+        return asparagus.raw;
+    }
 }

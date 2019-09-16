@@ -22,10 +22,6 @@ public class BlockVeggieCrop extends CropsBlock {
         this(name, Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0f).sound(SoundType.PLANT));
     }
 
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return state.getBlock() instanceof FarmlandBlock;
-    }
-
     protected int getBonemealAgeIncrease(World worldIn) {
         return MathHelper.nextInt(worldIn.rand, 1, 2);
     }

@@ -1,10 +1,13 @@
 package net.grallarius.cornucopia;
 
+import net.grallarius.cornucopia.orchard.Orchard;
 import net.grallarius.cornucopia.veggies.Veggie;
 import net.grallarius.cornucopia.veggies.VeggieEventHandler;
 import net.grallarius.cornucopia.veggies.VeggieLoot;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.item.BlockItem;
 import net.minecraft.world.GrassColors;
 import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.common.MinecraftForge;
@@ -41,15 +44,24 @@ public class Proxy {
         }
 
         private static void clientSetup(FMLClientSetupEvent event) {
-            addBiomeTinting(Veggie.getCropArray());
+            addBlockBiomeTinting(Veggie.getCropArray());
+            addBlockBiomeTinting(Orchard.getLeafArray());
+            addBlockItemBiomeTinting(Orchard.getLeafArray());
         }
 
-        private static void addBiomeTinting(Block[] blocks) {
+        private static void addBlockBiomeTinting(Block[] blocks) {
             Minecraft.getInstance().getBlockColors().register(
                     (state, world, pos, tintIndex) -> world != null && pos != null
                             ? BiomeColors.getGrassColor(world, pos)
                             : GrassColors.get(0.5, 1),
                     blocks);
+        }
+
+        private static void addBlockItemBiomeTinting(Block[] blocks) {
+            Minecraft.getInstance().getItemColors().register((stack, i) -> {
+                BlockState blockstate = ((BlockItem)stack.getItem()).getBlock().getDefaultState();
+                return Minecraft.getInstance().getBlockColors().getColor(blockstate, null, null, i);
+            }, blocks);
         }
     }
 
