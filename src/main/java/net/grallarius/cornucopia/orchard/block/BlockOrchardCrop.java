@@ -23,13 +23,13 @@ public class BlockOrchardCrop extends CropsBlock {
             Block.makeCuboidShape(1.0D, 2.0D, 1.0D, 15.0D, 16.0D, 15.0D)};
     private final BlockOrchardSapling sapling;
     private final BlockOrchardLeaves leaves;
-    private final int maxNeighbors;
+    private final double maxNeighbors;
 
     public BlockOrchardCrop(final String name, BlockOrchardSapling sapling, BlockOrchardLeaves leaves) {
         super(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT));
         this.sapling = sapling;
         this.leaves = leaves;
-        this.maxNeighbors = 2;
+        this.maxNeighbors = 1.5;
         this.setRegistryName(Cornucopia.getId(String.format("orchard_%s_crop", name)));
     }
 
@@ -43,17 +43,17 @@ public class BlockOrchardCrop extends CropsBlock {
                 worldIn.getBlockState(pos.up()).getBlock() == leaves;
     }
 
-    boolean hasMaxNeighbors(IWorldReader worldIn, BlockPos pos) {
+    boolean hasMaxNeighbors(World worldIn, BlockPos pos) {
         return numberOfNeighbors(worldIn, pos) >= maxNeighbors;
     }
 
-    private int numberOfNeighbors(IWorldReader worldIn, BlockPos pos) {
-        int neighbors = 0;
-        for (int x = -1; x <= 1; x++) {
-            for (int z = -1; z <= 1; z++) {
-                BlockPos newPos = pos.add(x, 0, z);
-                if (newPos != pos && worldIn.getBlockState(newPos).getBlock() instanceof BlockOrchardCrop)
-                    neighbors++;
+    private double numberOfNeighbors(World worldIn, BlockPos pos) {
+        double neighbors = 0.0D;
+        for (int x = -1; x < 1; x++) {
+            for (int z = -1; z < 1; z++) {
+                int steps = Math.abs(x) + Math.abs(z);
+                if (worldIn.getBlockState(pos.add(x, 0, z)).getBlock() instanceof BlockOrchardCrop)
+                    neighbors = steps == 2 ? neighbors + 1.0D : neighbors + 0.5D;
             }
         }
         return neighbors;

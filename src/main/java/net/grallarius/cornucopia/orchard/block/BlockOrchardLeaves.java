@@ -32,13 +32,14 @@ public class BlockOrchardLeaves extends LeavesBlock {
     }
 
     public void randomTick(BlockState state, World worldIn, BlockPos pos, Random random) {
-        if (isValidFruitPosition(worldIn, pos) && random.nextInt(10) == 0) {
+        if (isValidFruitPosition(worldIn, pos) && random.nextInt(32) == 0)
             worldIn.setBlockState(pos.down(), this.crop.getDefaultState());
-        }
         super.randomTick(state, worldIn, pos, random);
     }
 
     private boolean isValidFruitPosition(World worldIn, BlockPos pos) {
-        return this.crop.isValidPosition(this.crop.getDefaultState(), worldIn, pos.down()) && !this.crop.hasMaxNeighbors(worldIn, pos.down());
+        return this.crop.isValidPosition(this.crop.getDefaultState(), worldIn, pos.down()) &&
+                worldIn.getBlockState(pos.down()).getBlock() == Blocks.AIR &&
+                !this.crop.hasMaxNeighbors(worldIn, pos.down());
     }
 }

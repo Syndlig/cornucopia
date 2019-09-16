@@ -13,9 +13,10 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.Objects;
 
 public class Orchard {
-    private static final LinkedHashMap<String, Orchard> fruitMap = new LinkedHashMap<>();
+    private static final LinkedHashMap<String, Orchard> orchardMap = new LinkedHashMap<>();
     public static final Orchard
             almond = new Orchard("almond"),
             avocado = new Orchard("avocado"),
@@ -35,11 +36,11 @@ public class Orchard {
             pear = new Orchard("pear"),
             plum = new Orchard("plum"),
             pomegranate = new Orchard("pomegranate");
-    public final BlockOrchardCrop crop;
-    public final BlockOrchardLog log;
-    public final BlockOrchardLeaves leaves;
-    public final BlockOrchardSapling sapling;
-    public final ItemOrchardRaw raw;
+    private final BlockOrchardCrop crop;
+    private final BlockOrchardLog log;
+    private final BlockOrchardLeaves leaves;
+    private final BlockOrchardSapling sapling;
+    private final ItemOrchardRaw raw;
 
     private Orchard(final String name, final BlockOrchardLog log, final BlockOrchardLeaves leaves, final BlockOrchardSapling sapling, final ItemOrchardRaw raw) {
         this.crop = new BlockOrchardCrop(name, sapling, leaves);
@@ -49,7 +50,7 @@ public class Orchard {
         this.sapling = sapling;
         this.raw = raw;
 
-        fruitMap.put(name, this);
+        orchardMap.put(name, this);
     }
 
     private Orchard(final String name, final BlockOrchardLog log, BlockOrchardLeaves leaves) {
@@ -61,17 +62,15 @@ public class Orchard {
     }
 
     public static void registerBlocks(IForgeRegistry<Block> registry) {
-        fruitMap.values().forEach(orchard -> {
-            registry.registerAll(orchard.crop, orchard.leaves, orchard.log, orchard.sapling);
-        });
+        orchardMap.values().forEach(orchard -> registry.registerAll(orchard.crop, orchard.leaves, orchard.log, orchard.sapling));
     }
 
     public static void registerItems(IForgeRegistry<Item> registry) {
-        fruitMap.values().forEach(orchard -> registry.register(orchard.raw));
+        orchardMap.values().forEach(orchard -> registry.register(orchard.raw));
     }
 
     public static void registerBlockItems(IForgeRegistry<Item> registry) {
-        fruitMap.values().forEach(orchard -> {
+        orchardMap.values().forEach(orchard -> {
             registerBlockItem(registry, orchard.sapling);
             registerBlockItem(registry, orchard.log);
             registerBlockItem(registry, orchard.leaves);
@@ -80,12 +79,16 @@ public class Orchard {
 
     private static void registerBlockItem(IForgeRegistry<Item> registry, Block block) {
         BlockItem blockItem = new BlockItem(block, new Item.Properties().group(CornucopiaTabs.ORCHARD));
-        blockItem.setRegistryName(block.getRegistryName());
+        blockItem.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
         blockItem.addToBlockToItemMap(Item.BLOCK_TO_ITEM, blockItem);
         registry.register(blockItem);
     }
 
     public static BlockOrchardLeaves[] getLeafArray() {
-        return Arrays.stream(fruitMap.values().toArray(new Orchard[0])).map(orchard -> orchard.leaves).toArray(BlockOrchardLeaves[]::new);
+        return Arrays.stream(orchardMap.values().toArray(new Orchard[0])).map(orchard -> orchard.leaves).toArray(BlockOrchardLeaves[]::new);
+    }
+
+    public static ItemOrchardRaw getTabIcon() {
+        return peach.raw;
     }
 }

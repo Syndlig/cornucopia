@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "cornucopia:item/orchard_coffee_raw"
+    }
+}

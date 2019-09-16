@@ -96,4 +96,8 @@ public class Veggie {
     public static BlockVeggieCrop[] getCropArray() {
         return Arrays.stream(vegMap.values().toArray(new Veggie[0])).map(veggie -> veggie.crop).toArray(BlockVeggieCrop[]::new);
     }
+
+    public static ItemVeggieRaw getTabIcon() {
+        return asparagus.raw;
+    }
 }
